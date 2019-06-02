@@ -1,18 +1,25 @@
 
 
-nginx常用命令：
-
+### nginx常用命令：
+```
 　　nginx　　启动nginx
-
 　　nginx -s stop/reload　　停止nginx/重载配置文件
-
 　　nginx -v　　查看版本
-
 　　nginx -t　　测试配置文件是否有语法上的错误等
+```
+
+### ubuntu 下命令
+```
+Nginx 重启 /etc/init.d/nginx restart
+            状态。 service nginx status
+        nginx -s stop  :快速停止nginx
+        启动nginx: nginx -c /path/to/nginx.conf
+                 sudo nginx -t   检查错误
+sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled  将文件链接到sites-enabled目录
+```
 
 
-
-## nginx 配置uwsgi
+### nginx 配置uwsgi
 ```
 server {
         listen       80;         //默认的web访问端口
