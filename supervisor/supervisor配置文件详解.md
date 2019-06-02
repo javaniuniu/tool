@@ -1,3 +1,6 @@
+# supervisor 配置文件详解
+
+```
 [unix_http_server]            
 file=/tmp/supervisor.sock   ; socket文件的路径，supervisorctl用XML_RPC和supervisord通信就是通过它进行
                               的。如果不设置的话，supervisorctl也就不能用了  
@@ -252,7 +255,7 @@ serverurl=unix:///tmp/supervisor.sock ; 这个是supervisorctl本地连接superv
 ;[include]                         ;这个东西挺有用的，当我们要管理的进程很多的时候，写在一个文件里面
                                     就有点大了。我们可以把配置信息写到多个文件中，然后include过来
 ;files = relative/directory/*.ini
-
+```
 
 参考文档:[快速入门supervisor](https://www.jianshu.com/p/2e11c9a38cf4?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 [supervisor 文件配置详情](https://blog.51cto.com/lixcto/1539136?utm_source=hacpai.com)

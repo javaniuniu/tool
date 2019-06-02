@@ -120,7 +120,7 @@ Error: Cannot open an HTTP server: socket.error reported errno.EACCES (13)
 ### 处理方法
 经验告诉我，我用root权限就就都好了，或者用 777 修改文件写权限
 
-## 
+## supervisorctl常用操作
 ```
 supervisorctl stop program_name  # 停止某一个进程，program_name 为 [program:x] 里的 x
 
@@ -139,8 +139,8 @@ supervisorctl reload  # 载入最新的配置文件，停止原有进程并按�
 
 supervisorctl update  # 根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启
 ```
-
-参考链接： [supervisord安装使用简记](https://www.cnblogs.com/wswang/p/5795766.html)
-详细说明可参考：[Python 进程管理工具 Supervisor 使用教程](https://www.cnblogs.com/restran/p/4854623.html)
-github项目参考 [mlazarov/supervisord-monitor](https://github.com/mlazarov/supervisord-monitor)
-        [TAKEALOT/nodervisor](https://github.com/TAKEALOT/nodervisor)
+## 参考链接
+参考链接：         [supervisord安装使用简记](https://www.cnblogs.com/wswang/p/5795766.html)
+详细说明可参考：    [Python 进程管理工具 Supervisor 使用教程](https://www.cnblogs.com/restran/p/4854623.html)
+github项目参考     [mlazarov/supervisord-monitor](https://github.com/mlazarov/supervisord-monitor)
+                  [TAKEALOT/nodervisor](https://github.com/TAKEALOT/nodervisor)

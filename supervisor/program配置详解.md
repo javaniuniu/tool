@@ -1,3 +1,5 @@
+# program配置详解
+```
 - command：启动程序使用的命令，可以是绝对路径或者相对路径
 - process_name：一个python字符串表达式，用来表示supervisor进程启动的这个的名称，默认值是%(program_name)s
 - numprocs：Supervisor启动这个程序的多个实例，如果numprocs>1，则process_name的表达式必须包含%(process_num)s，默认是1
@@ -29,6 +31,7 @@
 - umask：设置进程的umask
 - serverurl：是否允许子进程和内部的HTTP服务通讯，如果设置为AUTO，supervisor会自动的构造一个url
 - loglevel=info  # 日志的级别
+```
 
-信息来源：
+信息参考：
 [supervisor 安装与nginx配置](https://www.cnblogs.com/hequan/p/9182746.html)

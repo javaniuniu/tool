@@ -1,6 +1,5 @@
 # 一 概览
 之前对 Nginx，WSGI（或者 uWSGI，uwsgi），Flask(或者 Django），这几者的关系一存存在疑惑。通过查阅了些资料，总算把它们的关系理清了。
-
 总括来说，客户端从发送一个 HTTP 请求到 Flask 处理请求，分别经过了 web服务器层，WSGI层，web框架层，这三个层次。不同的层次其作用也不同，下面简要介绍各层的作用。
 
 ![web服务器，web框架与 WSGI 的三层关系](https://segmentfault.com/img/bV7pnV?w=228&h=568)
@@ -18,21 +17,20 @@ Web服务器是一类特殊的服务器，其作用是主要是接收 HTTP 请�
 ## 2. Web框架层
 Web框架的作用主要是方便我们开发 web应用程序，HTTP请求的动态数据就是由 web框架层来提供的。常见的 web框架有Flask，Django等，我们以 Flask 框架为例子，展示 web框架的作用：
 ```
-    from flask import Flask
+from flask import Flask
     
-    app = Flask(__name__)
-    @app.route('/hello')
-    def hello_world():
-        return 'Hello World!'
-            
-    if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=8080)
+app = Flask(__name__)
+@app.route('/hello')
+def hello_world():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)
 ```
 以上简单的几行代码，就创建了一个 web应用程序对象 app。app 监听机器所有 ip 的 8080 端口，接受用户的请求连接。我们知道，HTTP 协议使用 URL 来定位资源，上面的程序会将路径 /hello 的请求交由 hello_world 方法处理，hello_world 返回 ‘Hello World!’ 字符串。对于 web框架的使用者来说，他们并不关心如何接收 HTTP 请求，也不关心如何将请求路由到具体方法处理并将响应结果返回给用户。Web框架的使用者在大部分情况下，只需要关心如何实现业务的逻辑即可
 
 ## 3. WSGI层
 WSGI 不是服务器，也不是用于与程序交互的API，更不是真实的代码，WSGI 只是一种接口,它只适用于 Python 语言，其全称为 Web Server Gateway Interface，定义了 web服务器和 web应用之间的接口规范。也就是说，只要 web服务器和 web应用都遵守WSGI协议，那么 web服务器和 web应用就可以随意的组合。
-
 下面的代码展示了 web服务器是如何与 web应用组合在一起的。
 ```
 def application(env, start_response):
@@ -40,9 +38,7 @@ def application(env, start_response):
     return [b"Hello World"]
 ```
 方法 application由 web服务器调用，参数env，start_response 由 web服务器实现并传入。其中，env是一个字典，包含了类似 HTTP_HOST，HOST_USER_AGENT，SERVER_PROTOCO 等环境变量。start_response则是一个方法，该方法接受两个参数，分别是status，response_headers。application方法的主要作用是，设置 http 响应的状态码和 Content-Type 等头部信息，并返回响应的具体结果。
-
 上述代码就是一个完整的 WSGI 应用，当一个支持 WSGI 的 web服务器接收到客户端的请求后，便会调用这个 application 方法。WSGI 层并不需要关心env，start_response 这两个变量是如何实现的，就像在 application 里面所做的，直接使用这两个变量即可。
-
 值得指出的是，WSGI 是一种协议，需要区分几个相近的名词：
 1. uwsgi 
 同 wsgi 一样也是一种协议，uWSGI服务器正是使用了 uwsgi 协议
@@ -57,7 +53,7 @@ def application(env, start_response):
 
 # 三 结语
 最后以 Nginx，WSGI，Flask 之间的对话结束本文。
-
+```
 Nginx：Hey，WSGI，我刚收到了一个请求，我需要你作些准备，然后由Flask来处理这个请求。 
 WSGI：OK，Nginx。我会设置好环境变量，然后将这个请求传递给Flask处理。 
 Flask：Thanks WSGI！给我一些时间，我将会把请求的响应返回给你。 
@@ -65,7 +61,7 @@ WSGI：Alright，那我等你。
 Flask：Okay，我完成了，这里是请求的响应结果，请求把结果传递给Nginx。 
 WSGI：Good job！Nginx，这里是响应结果，已经按照要求给你传递回来了。 
 Nginx：Cool，我收到了，我把响应结果返回给客户端。大家合作愉快~
-
+```
 
 参考文档
 [如何理解Nginx, WSGI, Flask之间的关系](https://segmentfault.com/a/1190000014105795)

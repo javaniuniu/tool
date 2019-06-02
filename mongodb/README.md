@@ -1,7 +1,7 @@
 ### 启动mongodb
 ```
 cd /usr/local/mongodb/bin
- sudo mongod
+sudo mongod
 ```
 
 ### 打开另一个终端 
