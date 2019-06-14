@@ -27,3 +27,10 @@ netstat -tunlp          查所有端口
 ```
 scp -r /Users/minp/PycharmProjects/flask_v1 root@192.168.2.115:mysite
 ```
+
+### 查看端口
+```
+$ netstat -apn | grep 8000
+```
+
+apt install vim 安装vim

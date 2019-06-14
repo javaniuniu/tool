@@ -259,3 +259,4 @@ serverurl=unix:///tmp/supervisor.sock ; 这个是supervisorctl本地连接superv
 
 参考文档:[快速入门supervisor](https://www.jianshu.com/p/2e11c9a38cf4?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 [supervisor 文件配置详情](https://blog.51cto.com/lixcto/1539136?utm_source=hacpai.com)
+[Ubuntu 16.04 Supervisor 配置使用](https://www.jianshu.com/p/206b6bf3ef56)

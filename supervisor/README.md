@@ -39,3 +39,7 @@ $ sudo chmod -R 777 某一目录
 
 2. 或者使用root权限 安装和操作supervisord
 
+#注意
+Supervisor只能管理非daemon的进程，也就是说Supervisor不能管理守护进程。否则提示Exited too quickly (process log may have details)异常。例子中的Tomcat默认是以守护进程启动的，所以我们改成了catalina.sh run，以前台进程的方式运行
+
+
