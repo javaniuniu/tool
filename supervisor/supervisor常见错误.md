@@ -47,3 +47,46 @@ error: <class ‘socket.error’>, [Errno 2] No such file or directory: file:/us
 Supervisor只能管理非daemon的进程，也就是说Supervisor不能管理守护进程。否则提示Exited too quickly (process log may have details)异常。例子中的Tomcat默认是以守护进程启动的，所以我们改成了catalina.sh run，以前台进程的方式运行
 ```
 
+## 5.
+错误提示
+>运行的网页在上传文件 或者在读写操作的时候 提示的错误，
+```
+), mode=0777)
+      File "/usr/lib/python2.7/os.py", line 150, in makedirs
+        makedirs(head, mode)
+      File "/usr/lib/python2.7/os.py", line 150, in makedirs
+        makedirs(head, mode)
+      File "/usr/lib/python2.7/os.py", line 150, in makedirs
+        makedirs(head, mode)
+      File "/usr/lib/python2.7/os.py", line 157, in makedirs
+        mkdir(name, mode)
+    OSError: [Errno 13] Permission denied: '/app/luokr.com/www/upload/2019'
+```
+处理前 program 配置
+```
+[program:www.luokr.com]
+user=www-data
+directory=/app/luokr.com/app
+command= python svr.py --port=80%(process_num)02d
+process_name=%(program_name)s-80%(process_num)02d
+numprocs_start=1
+numprocs=2
+autostart=true
+autorestart=true
+startretries=10
+```
+处理后 program 配置
+```
+[program:www.luokr.com]
+user=root
+directory=/app/luokr.com/app
+command= python svr.py --port=80%(process_num)02d
+process_name=%(program_name)s-80%(process_num)02d
+numprocs_start=1
+numprocs=2
+autostart=true
+autorestart=true
+startretries=10
+```
+> user= root 改成root权限去处理文件
+
