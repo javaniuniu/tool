@@ -1,4 +1,4 @@
-#supervisord mac下安装简单demo
+#supervisord mac下安装
 
 ## 安装
 1. 因为是用Python实现的，所以最简单的方式是pip install supervisor
