@@ -11,3 +11,4 @@ Working directoroty : $ProjectFileDir$
 
 Output filters : $FILE_PATH$\:$LINE$\:$COLUMN$\:.*
 ```
+![pep8配置截图](pep8配件截图.png)
