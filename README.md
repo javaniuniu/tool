@@ -4,9 +4,9 @@
 
 * [env环境变量详细说明](https://github.com/minplemon/tool/tree/master/env)
 
-* [mongodb详细说明](https://github.com/minplemon/tool/tree/master/mongodb)
+* [mongodb详细说明](https://github.com/minplemon/tool/tree/master/sql)
 
-* [mysql详细说明](https://github.com/minplemon/tool/tree/master/mysql)
+* [mysql详细说明](https://github.com/minplemon/tool/tree/master/sql)
 
 * [nginx量详细说明](https://github.com/minplemon/tool/tree/master/nginx)
 
@@ -18,3 +18,6 @@
 
 安装：
 pip install uwsgi
+
+
+## 本工具tool 主要针对ubuntu 18.04 系统
