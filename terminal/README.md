@@ -32,5 +32,12 @@ scp -r /Users/minp/PycharmProjects/flask_v1 root@192.168.2.115:mysite
 ```
 $ netstat -apn | grep 8000
 ```
-
+### 软件安装
+```
 apt install vim 安装vim
+```
+
+### 立刻关机
+```
+poweroff 立刻关机
+```
