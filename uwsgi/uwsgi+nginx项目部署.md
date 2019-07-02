@@ -384,8 +384,6 @@ http {
 >- master ： 允许主进程存在（enable master process）
 >- daemonize ： 使进程在后台运行，并将日志打到指定的日志文件或者udp服务器（daemonize uWSGI）。实际上最常
 >  用的，还是把运行记录输出到一个本地文件上。
->- daemonize ： 使进程在后台运行，并将日志打到指定的日志文件或者udp服务器（daemonize uWSGI）。实际上最常
->  用的，还是把运行记录输出到一个本地文件上。
 >- vacuum ： 当服务器退出的时候自动清理环境，删除unix socket文件和pid文件（try to remove all of the ge
 ```
 
