@@ -49,3 +49,10 @@ MongoDB server version: 4.0.9
 2
 >
 ```
+
+
+MongoDb web 用户界面
+```
+$ ./mongod --dbpath=/data/db --rest
+```
+http://localhost:28017
