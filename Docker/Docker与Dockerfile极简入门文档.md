@@ -1,7 +1,7 @@
 # Docker与Dockerfile极简入门文档
 ## docker的安装
 
-docker的安装我就不多说，建议按照docker的官方安装文档一步一步来https://docs.docker.com/install/。需要注意的是，Docker的windows版本只支持Win10的专业版和企业版，像我们普通学生用的Win10家庭版它是不支持的，但是docker官方也提供一个docker toolbox（下载地址：https://docs.docker.com/toolbox/toolbox_install_windows/），通过它可以在windows上运行docker，只不过这个docker toolbox是基于一个linux虚拟机运行的，所以性能肯定是不如原生的好。
+docker的安装我就不多说，建议按照docker的官方安装文档一步一步来 https://docs.docker.com/install/ 。需要注意的是，Docker的windows版本只支持Win10的专业版和企业版，像我们普通学生用的Win10家庭版它是不支持的，但是docker官方也提供一个docker toolbox（下载地址： https://docs.docker.com/toolbox/toolbox_install_windows/ ），通过它可以在windows上运行docker，只不过这个docker toolbox是基于一个linux虚拟机运行的，所以性能肯定是不如原生的好。
 
 安装好docker后，不要忘了用service docker start或者systemctl start docker（如果是centos7以上版本的话）启动docker的服务
 
@@ -35,10 +35,10 @@ docker search tutorial
 ```
 输出如下：
 ```
-NAME                                          DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
-learn/tutorial                                                                                38
-georgeyord/reactjs-tutorial                   This is the backend of the React comment box…   5                      [OK]
-chris24walsh/flask-aws-tutorial               Runs a simple flask webapp demo, with the op…   1                      [OK]
+NAME                                     DESCRIPTION                                     STARS    OFFICIAL      AUTOMATED
+learn/tutorial                                                                           38
+georgeyord/reactjs-tutorial              This is the backend of the React comment box…   5                      [OK]
+chris24walsh/flask-aws-tutorial          Runs a simple flask webapp demo, with the op…   1                      [OK]
 ......(以下省略)
 ```
 可以使用docker pull命令从仓库中拉取刚刚搜索到的镜像到本地，这里为了避免learn/tutorial那个镜像被取消，我自己重建了一个一样的，这里拉取我创建的那个镜像：
@@ -98,7 +98,7 @@ docker run ddfddf/tutorial ping www.baidu.com
 ```
 docker: Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused "exec: \"ping\": executable file not found in $PATH": unknown.
 ```
-从"ping": executable file not found in $PATH这句话中可以看出是因为ping命令没有装导致的，* 刚刚明明装过ping命令了，为什么没有呢？这是因为在容器中的修改并不会影响镜像，通过docker commit命令可以将这个容器提交成一个新的镜像 * 。命令如下：
+从"ping": executable file not found in $PATH这句话中可以看出是因为ping命令没有装导致的， *刚刚明明装过ping命令了，为什么没有呢？这是因为在容器中的修改并不会影响镜像，通过docker commit命令可以将这个容器提交成一个新的镜像* 。命令如下：
 ```
 docker commit 0299878039f0 ddfddf/ping
 ```
@@ -164,7 +164,7 @@ docker exec用于在正在运行的容器中执行命令，-ti选项表示分配
 
 ## 再聊聊仓库（Registry）
 
-之前讲过，Docker Hub Registry是Docker的官方仓库，其实这是一个有点类似于Github的地方，任何人都可以在上面提交与下载镜像，我们可以先去上面注册一个账户（地址：https://hub.docker.com/），注册账户时会有谷歌的人机认证系统，所以需要一些科学上网技巧。
+之前讲过，Docker Hub Registry是Docker的官方仓库，其实这是一个有点类似于Github的地方，任何人都可以在上面提交与下载镜像，我们可以先去上面注册一个账户（地址： https://hub.docker.com/ ），注册账户时会有谷歌的人机认证系统，所以需要一些科学上网技巧。
 注册完成后可以用如下命令在shell中登录：
 ```
 docker login -u 用户名 -p 密码
@@ -241,7 +241,7 @@ docker build -t debian-jdk8:v1.0 .
 执行完毕后运行docker images就会发现多了一个debian-jdk8镜像。
 
 下面来解释一下Dockerfile的结构，那些字母全部大写的每行第一个单词都是Dockerfile的指令，可以看出这个Dockefile中包括的指令有FROM、ARG、ENV、RUN，下面的表格中我对其含义进行了解释：
-
+```
 指令	含义解释
 FROM	FROM debian:stretch表示以debian:stretch作为基础镜像进行构建
 RUN	  可以看出RUN后面跟的其实就是一些shell命令，通过&&将这些脚本连接在了一行执行，这么做的原因是为了减少镜像的层数，每多一行RUN都会给镜像
@@ -249,13 +249,13 @@ RUN	  可以看出RUN后面跟的其实就是一些shell命令，通过&&将这�
 ARG	  特地将这个指令放在RUN之后讲解，这个指令可以进行一些宏定义，比如我定义ENV JAVA_HOME=/opt/jdk，之后RUN后面的shell命令中的${JAVA_HOME}
       都会被/opt/jdk代替
 ENV	  可以看出这个指令的作用是在shell中设置一些环境变量（其实就是export）
-
+```
 ### 多阶段构建（multi-stage build）
 
 这个功能是在Docker17.05版本及以上才出现的，主要用于解决docker镜像构建的中间冗余文件的处理，这里只做简要介绍，更详细的解释请看官方文档：
-https://docs.docker.com/develop/develop-images/multistage-build/
+ https://docs.docker.com/develop/develop-images/multistage-build/
 
-有的时候会看见一些古怪，里面会有多个FROM指令或者FROM...AS...指令（这都是多阶段构建的标志），比如如下的dockerfile（来源于阿里中间件大赛的agent-demp，完整项目请见：https://github.com/DQinYuan/Agent-demo）：
+有的时候会看见一些古怪，里面会有多个FROM指令或者FROM...AS...指令（这都是多阶段构建的标志），比如如下的dockerfile（来源于阿里中间件大赛的agent-demp，完整项目请见： https://github.com/DQinYuan/Agent-demo ）：
 ```
 # Builder container
 FROM registry.cn-hangzhou.aliyuncs.com/aliware2018/services AS builder
@@ -263,8 +263,6 @@ FROM registry.cn-hangzhou.aliyuncs.com/aliware2018/services AS builder
 COPY . /root/workspace/agent
 WORKDIR /root/workspace/agent
 RUN set -ex && mvn clean package
-
-
 
 # Runner container
 FROM registry.cn-hangzhou.aliyuncs.com/aliware2018/debian-jdk8
@@ -288,7 +286,7 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 可以看出这是一个Java的Maven项目。
 
 先解释几个之前没解释过的指令：
-
+```
 指令	       含义解释
 FROM…AS…	  这是Docker 17.05及以上版本新出来的指令，其实就是给这个阶段的镜像起个别名：FROM ...(基础镜像) AS ...(别名)，在后面引用这个
             阶段的镜
@@ -296,8 +294,11 @@ FROM…AS…	  这是Docker 17.05及以上版本新出来的指令，其实就�
 COPY	      顾名思义，就是用来来回复制文件的，COPY . /root/workspace/agent表示将当前文件夹（.表示当前文件夹，即Dockerfile所在文件夹）的
             所以文件拷贝到容器的/root/workspace/agent文件夹中。通过--from参数也可以从前面阶段的镜像中拷贝文件过来，比如--from=builder表示文件来源不是本地文件系统，而是之前的别名为builder的容器
 WORKDIR	    在执行RUN后面的shell命令前会先cd进WORKDIR后面的目录
-ENTRYPOINT	这个参数表示镜像的“入口”，镜像打包完成之后，使用docker run命令运行这个镜像时，其实就是执行这个ENTRYPOINT后面的可执行文件（一般是一个shell脚本文件），也可以通过["可执行文件", "参数1", "参数2"]这种方式来赋予可执行文件的执行参数，这个“入口”执行的工作目录也是WORKDIR后面的那个目录
+ENTRYPOINT	这个参数表示镜像的“入口”，镜像打包完成之后，使用docker run命令运行这个镜像时，其实就是执行这个ENTRYPOINT后面的可执行文件（一般是一个shell
+            脚本文件），也可以通过["可执行文件", "参数1", "参数2"]这种方式来赋予可执行文件的执行参数，这个“入口”执行的工作目录也是WORKDIR后面的那个目录
+```
 知道上面这些指令后尝试阅读一下之前给出的Dockerfile。按照官方文档的说法，多阶段构建中每一个FROM指令表示开始一个阶段，第一阶段从第一个FROM开始，在第二个FROM之前结束，片段如下：
+
 ```
 # Builder container
 FROM registry.cn-hangzhou.aliyuncs.com/aliware2018/services AS builder
@@ -337,5 +338,5 @@ https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
 ---------------------
 ## 参考文档
-[Docker与Dockerfile极简入门文档](https://blog.csdn.net/qq_33256688/article/details/80319673)
-[dockerinfo](http://www.dockerinfo.net/document)
+- [Docker与Dockerfile极简入门文档](https://blog.csdn.net/qq_33256688/article/details/80319673)
+- [dockerinfo](http://www.dockerinfo.net/document)
