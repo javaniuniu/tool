@@ -92,3 +92,6 @@ poweroff 立刻关机
 du -sh /data/*
 ls /data |wc -w
 ```
+
+## 参考文档
+[Linux入门](http://c.biancheng.net/view/2943.html)
