@@ -19,5 +19,10 @@
 安装：
 pip install uwsgi
 
+## jupyter notebook 启动
+```
+jupyter notebook
+```
+
 
 ## 本工具tool 主要针对ubuntu 18.04 系统
