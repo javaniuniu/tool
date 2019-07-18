@@ -261,4 +261,5 @@ df_pokemon.xs(("Bug","Electric"),level=(["类型1","类型2"]))
 xs在每个索引列上选择的标签只能是一个，所以做不到切片标签的选取
 
 ## 参考文档
-[DataFrame——数据选取与筛选](https://www.zybuluo.com/jk88876594/note/837142)
+- [DataFrame——数据选取与筛选](https://www.zybuluo.com/jk88876594/note/837142)
+- [阿雷python第3期资料地址](https://www.zybuluo.com/jk88876594/note/805639)
