@@ -432,3 +432,7 @@ public class TestMongoDBReplSetReadSplit {
 http://cn.docs.mongodb.org/manual/administration/replica-set-member-configuration/
 http://docs.mongodb.org/manual/reference/connection-string/
 http://www.cnblogs.com/magialmoon/p/3268963.html
+
+
+## 参考文档
+[搭建高可用mongodb集群（二）—— 副本集](http://www.lanceyan.com/tech/mongodb/mongodb_repset1.html)

@@ -335,3 +335,6 @@ public class TestMongoDBShards {
 
 参考：
 http://docs.mongodb.org/manual/core/sharding-introduction/
+
+## 参考文档
+[搭建高可用mongodb集群（四）—— 分片](http://www.lanceyan.com/tech/arch/mongodb_shard1.html)

@@ -36,7 +36,7 @@ cd  /data/mongodbtest/single
 ```
 wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.6.tgz
 
-#解压下载的压缩包  
+#解压下载的压缩包
 tar xvzf mongodb-linux-x86_64-2.4.6.tgz
 
 #进入mongodb程序执行文件夹
@@ -206,3 +206,6 @@ mongod  --dbpath /data/mongodbtest/slave1 --slave  --port 27017 --source 192.168
 - 从节点每个上面的数据都是对数据库全量拷贝，从节点压力会不会过大？
 - 就算对从节点路由实施路由访问策略能否做到自动扩展？
 还有这么多问题，有其他解决方案吗？下一篇接着弄[搭建高可用mongodb集群（二）—— 副本集](./搭建高可用mongodb集群（二）—— 副本集.md)
+
+## 参考文档
+[搭建高可用mongodb集群（一）——配置mongodb](http://www.lanceyan.com/tech/mongodb/mongodb_cluster_1.html)

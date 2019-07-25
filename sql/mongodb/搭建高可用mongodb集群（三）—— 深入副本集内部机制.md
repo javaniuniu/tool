@@ -154,3 +154,6 @@ b. 按照上一篇设置节点为Non-Voting类型。
 2. 数据压力大到机器支撑不了的时候能否做到自动扩展？
 
 下一篇接着弄[搭建高可用mongodb集群（四）—— 分片](./搭建高可用mongodb集群（四）—— 分片.md)
+
+## 参考文档
+[搭建高可用mongodb集群（三）—— 深入副本集内部机制](http://www.lanceyan.com/tech/mongodb_repset2.html)
