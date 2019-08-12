@@ -173,7 +173,7 @@ $ docker container ls
 # 列出本机所有容器，包括终止运行的容器
 $ docker container ls --all
 ```
-上面命令的输出结果之中，包括容器的 ID。很多地方都需要提供这个 ID，比如上一节终止容器运行的 *docker container kill*命令。
+上面命令的输出结果之中，包括容器的 ID。很多地方都需要提供这个 ID，比如上一节终止容器运行的 * docker container kill*命令。
 
 终止运行的容器文件，依然会占据硬盘空间，可以使用[docker container rm](https://docs.docker.com/engine/reference/commandline/container_rm/)命令删除。
 
@@ -226,7 +226,7 @@ RUN npm install：在/app目录下，运行npm install命令安装依赖。注�
 EXPOSE 3000：将容器 3000 端口暴露出来， 允许外部连接这个端口。
 ```
 ### 10.2 创建 image 文件
-有了 Dockerfile 文件以后，就可以使用 *docker image build*命令创建 image 文件了。
+有了 Dockerfile 文件以后，就可以使用 * docker image build*命令创建 image 文件了。
 
 ```
 $ docker image build -t koa-demo .
@@ -235,14 +235,14 @@ $ docker image build -t koa-demo:0.0.1 .
 ```
 上面代码中， *-t* 参数用来指定 image 文件的名字，后面还可以用冒号指定标签。如果不指定，默认的标签就是 *latest*。最后的那个点表示 Dockerfile 文件所在的路径，上例是当前路径，所以是一个点。
 
-如果运行成功，就可以看到新生成的 image 文件 *koa-demo*了。
+如果运行成功，就可以看到新生成的 image 文件 * koa-demo*了。
 
 ```
 $ docker image ls
 ```
 ### 10.3 生成容器
 
-*docker container run*命令会从 image 文件生成容器。
+*docker container run* 命令会从 image 文件生成容器。
 
 ```
 $ docker container run -p 8000:3000 -it koa-demo /bin/bash
@@ -306,9 +306,9 @@ CMD node demos/01.js
 ```
 上面的 Dockerfile 里面，多了最后一行 *CMD node demos/01.js*，它表示容器启动后自动执行node demos/01.js。
 
-你可能会问， *RUN*命令与 *CMD*命令的区别在哪里？简单说， *RUN*命令在 image 文件的构建阶段执行，执行结果都会打包进入 image 文件； *CMD*命令则是在容器启动后执行。另外，一个 Dockerfile 可以包含多个RUN命令，但是只能有一个 *CMD*命令。
+你可能会问， *RUN* 命令与 *CMD* 命令的区别在哪里？简单说， *RUN* 命令在 image 文件的构建阶段执行，执行结果都会打包进入 image 文件； *CMD* 命令则是在容器启动后执行。另外，一个 Dockerfile 可以包含多个RUN命令，但是只能有一个 *CMD* 命令。
 
-注意，指定了 *CMD*命令以后， *docker container run* 命令就不能附加命令了（比如前面的 */bin/bash*），否则它会覆盖CMD命令。现在，启动容器可以使用下面的命令。
+注意，指定了 *CMD* 命令以后， *docker container run* 命令就不能附加命令了（比如前面的 */bin/bash*），否则它会覆盖CMD命令。现在，启动容器可以使用下面的命令。
 
 ```
 $ docker container run --rm -p 8000:3000 -it koa-demo:0.0.1
@@ -352,7 +352,7 @@ $ docker container start [containerID]
 ```
 ###（2）docker container stop
 
-前面的docker container kill命令终止容器运行，相当于向容器里面的主进程发出 SIGKILL 信号。而docker container stop命令也是用来终止容器运行，相当于向容器里面的主进程发出 SIGTERM 信号，然后过一段时间再发出 SIGKILL 信号。
+前面的 docker container kill 命令终止容器运行，相当于向容器里面的主进程发出 SIGKILL 信号。而docker container stop 命令也是用来终止容器运行，相当于向容器里面的主进程发出 SIGTERM 信号，然后过一段时间再发出 SIGKILL 信号。
 
 ```
 $ bash container stop [containerID]
@@ -361,7 +361,7 @@ $ bash container stop [containerID]
 
 ###（3）docker container logs
 
-docker container logs命令用来查看 docker 容器的输出，即容器里面 Shell 的标准输出。如果docker run命令运行容器的时候，没有使用-it参数，就要用这个命令查看输出。
+docker container logs 命令用来查看 docker 容器的输出，即容器里面 Shell 的标准输出。如果docker run命令运行容器的时候，没有使用-it参数，就要用这个命令查看输出。
 
 ```
 $ docker container logs [containerID]
