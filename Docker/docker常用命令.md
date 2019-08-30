@@ -55,6 +55,14 @@ docker cp mynginx:/etc/nginx /etc/nginx
 docker cp /etc/nginx mynginx:/etc/nginx
 ```
 
+## 从 container 创建 image
+```
+- 命令
+docker commit [container] [imageName]
+- 实例
+docker commit nginx king101125s/nginxStudy:v1
+```
+
 docker top <CONTAINER_ID>     ：查看容器中运行的进程
 docker diff <CONTAINER_ID>    ：查看容器中的变化
 docker inspect <CONTAINER_ID> ：查看容器详细信息（输出为Json）
@@ -75,5 +83,6 @@ docker import  my_ubuntu_v3.tar runoob/ubuntu:v4
 docker run = docker create + docker start
 
 ## 参考详情
-[Docker与Dockerfile极简入门文档](./Docker与Dockerfile极简入门文档.md)
-[Docker入门教程](./Docker入门教程.md)
+- [Docker与Dockerfile极简入门文档](./Docker与Dockerfile极简入门文档.md)
+- [Docker入门教程](./Docker入门教程.md)
+- [docker-image container 基本操作 -常用命令](https://www.cnblogs.com/xiadongqing/p/6144053.html)
