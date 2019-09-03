@@ -58,9 +58,24 @@ docker cp /etc/nginx mynginx:/etc/nginx
 ## 从 container 创建 image
 ```
 - 命令
-docker commit [container] [imageName]
+  docker commit [container] [imageName]
 - 实例
 docker commit nginx king101125s/nginxStudy:v1
+```
+
+## push images到hub.docker.com
+```
+- 命令
+  docker push usename/repository:TAG
+- 实例
+  docker push king101125s/nginxStudy:v1
+```
+
+## 终端等了 docker
+```
+- docker login
+- docker login docker.io
+- docker login hub.docker.com
 ```
 
 docker top <CONTAINER_ID>     ：查看容器中运行的进程
