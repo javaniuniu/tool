@@ -71,7 +71,7 @@ docker commit nginx king101125s/nginxStudy:v1
   docker push king101125s/nginxStudy:v1
 ```
 
-## 终端等了 docker
+## 终端登录 docker
 ```
 - docker login
 - docker login docker.io
